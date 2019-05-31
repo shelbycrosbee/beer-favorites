@@ -8,7 +8,7 @@ class DeleteBeer extends Component {
 
   render() {
     return (
-      <a href="/" onClick={e => this.props.handleDelete(this.props.beerId, e)}>
+      <a className="px" href="/" onClick={e => this.props.handleDelete(this.props.beerId, e)}>
         Delete
       </a>
     );

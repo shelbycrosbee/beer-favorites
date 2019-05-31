@@ -2,33 +2,41 @@ import React, { Component } from "react";
 import "./App.css";
 import CreateBeer from "./CreateBeer";
 import BeerList from "./BeerList";
+import axios from "axios";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       beers: [
-        {
-          id: 0,
-          name: "Choco Stout",
-          edit: false
-        },
-        {
-          id: 1,
-          name: "Blonde White",
-          edit: false
-        },
-        {
-          id: 2,
-          name: "Thunder Monkey",
-          edit: false
-        }
+
       ],
-      newBeerCounter: 3,
+      newBeerCounter: 0,
       newBeerName: ""
     };
   }
-
+  componentDidMount() {
+    axios.get("https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/beers", {
+      params: {
+        key: '6a77d8ebdb6fc67de2c49dc0f1141b01',
+        styleId: 43
+      }
+    })
+      .then(response => {
+        console.log(response.data.data);
+        let beers = response.data.data.map((beer, i) => {
+          return {
+            id: i,
+            name: `${beer.name} --- ABV: ${beer.abv}`,
+            // abv: beer.abv
+          }
+        })
+        this.setState({ beers, newBeerCounter: beers.length })
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }
   setEdit = (e, beerId) => {
     let newBeers = this.state.beers.map(beer => {
       if (beer.id === beerId) {

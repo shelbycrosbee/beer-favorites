@@ -16,6 +16,12 @@ class UpdateBeer extends Component {
     });
   }
 
+  componentDidMount(){
+    this.setState({
+      updatedBeerName: this.props.beer.name
+    })
+  }
+
   render() {
     return (
       <li>
@@ -25,7 +31,7 @@ class UpdateBeer extends Component {
               type="text"
               name="editBeerName"
               value={this.state.updatedBeerName}
-              placeholder={this.props.beer.name}
+              // placeholder={this.props.beer.name}
               onChange={e => this.handleChange(e)}
             />
           ) : (
@@ -46,6 +52,7 @@ class UpdateBeer extends Component {
             Update
           </a>
         ) : (
+
           <DeleteBeer
             beerId={this.props.beer.id}
             handleDelete={this.props.handleDelete}
