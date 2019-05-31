@@ -81,7 +81,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>Georgie's Beer Favorites</h1>
+        <h1>Everyone's Beer Favorites</h1>
         <BeerList
           beers={this.state.beers}
           setEdit={this.setEdit.bind(this)}
