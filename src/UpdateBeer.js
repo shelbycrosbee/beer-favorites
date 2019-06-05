@@ -7,8 +7,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
-// import InboxIcon from '@material-ui/icons/Inbox';
-// import DraftsIcon from '@material-ui/icons/Drafts';
+import clsx from 'clsx';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+
 
 class UpdateBeer extends Component {
   constructor(props) {
@@ -17,8 +19,6 @@ class UpdateBeer extends Component {
       updatedBeerName: ""
     };
   }
-
-
 
   handleChange(e) {
     this.setState({
@@ -31,8 +31,27 @@ class UpdateBeer extends Component {
       updatedBeerName: this.props.beer.name
     })
   }
-
+  useStyles() {
+    return makeStyles(theme => ({
+      container: {
+        // display: 'flex',
+        // flexWrap: 'wrap',
+        width: "100%"
+      },
+      textField: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+      },
+      dense: {
+        marginTop: theme.spacing(2),
+      },
+      menu: {
+        width: 200,
+      },
+    }));
+  }
   render() {
+    const classes = this.useStyles();
 
     return (
       <div>
@@ -41,13 +60,25 @@ class UpdateBeer extends Component {
 
           <span onClick={e => this.props.setEdit(e, this.props.beer.id)}>
             {this.props.beer.edit ? (
-              <input
+              <form className={classes.container} noValidate autoComplete="off">
+                <TextField
+                  id="outlined-name"
+                  label="Update"
+                  className={classes.textField}
+                  value={this.state.updatedBeerName}
+                  onChange={e => this.handleChange(e)}
+                  margin="normal"
+                  variant="outlined"
+                />
+              </form>
+
+              /* <input
                 type="text"
                 name="editBeerName"
                 value={this.state.updatedBeerName}
                 // placeholder={this.props.beer.name}
-                onChange={e => this.handleChange(e)}
-              />
+                onChange={e => this.handleChange(e)} */
+
             ) : (
                 this.props.beer.name
               )}
