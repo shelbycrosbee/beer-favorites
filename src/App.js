@@ -3,6 +3,7 @@ import "./App.css";
 import CreateBeer from "./CreateBeer";
 import BeerList from "./BeerList";
 import axios from "axios";
+import TopNav from "./Components/TopNav/TopNav";
 
 class App extends Component {
   constructor(props) {
@@ -89,6 +90,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <TopNav />
         <h1>Everyone's Beer Favorites</h1>
         <BeerList
           beers={this.state.beers}

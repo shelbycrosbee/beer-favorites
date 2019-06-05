@@ -20,5 +20,4 @@ class BeerList extends Component {
     return <ul>{beersList}</ul>;
   }
 }
-
 export default BeerList;

@@ -16,7 +16,7 @@ class UpdateBeer extends Component {
     });
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.setState({
       updatedBeerName: this.props.beer.name
     })
@@ -35,8 +35,8 @@ class UpdateBeer extends Component {
               onChange={e => this.handleChange(e)}
             />
           ) : (
-            this.props.beer.name
-          )}
+              this.props.beer.name
+            )}
         </span>
         {this.props.beer.edit ? (
           <a
@@ -53,11 +53,11 @@ class UpdateBeer extends Component {
           </a>
         ) : (
 
-          <DeleteBeer
-            beerId={this.props.beer.id}
-            handleDelete={this.props.handleDelete}
-          />
-        )}
+            <DeleteBeer
+              beerId={this.props.beer.id}
+              handleDelete={this.props.handleDelete}
+            />
+          )}
       </li>
     );
   }
