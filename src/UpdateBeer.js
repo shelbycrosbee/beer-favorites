@@ -29,40 +29,20 @@ class UpdateBeer extends Component {
       updatedBeerName: this.props.beer.name
     })
   }
-  useStyles() {
-    return makeStyles(theme => ({
-      container: {
-        // display: 'flex',
-        // flexWrap: 'wrap',
-        width: "100%"
-      },
-      textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-      },
-      dense: {
-        marginTop: theme.spacing(2),
-      },
-      menu: {
-        width: 200,
-      },
-    }));
-  }
   render() {
-    const classes = this.useStyles();
+
 
     return (
       <div>
-        <Divider/>
+        <Divider />
         <ListItem button>
 
           <span onClick={e => this.props.setEdit(e, this.props.beer.id)}>
             {this.props.beer.edit ? (
-              <form className={classes.container} noValidate autoComplete="off" className = "font">
+              <form  noValidate autoComplete="off" className="font">
                 <TextField
                   id="outlined-name"
                   label="Update"
-                  className={classes.textField}
                   value={this.state.updatedBeerName}
                   onChange={e => this.handleChange(e)}
                   margin="normal"
@@ -89,7 +69,7 @@ class UpdateBeer extends Component {
           </Button>
           ) : (
 
-               <DeleteBeer
+              <DeleteBeer
                 beerId={this.props.beer.id}
                 handleDelete={this.props.handleDelete}
               />

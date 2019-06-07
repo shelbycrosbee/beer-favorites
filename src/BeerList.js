@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import UpdateBeer from "./UpdateBeer";
-import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 
 class BeerList extends Component {
@@ -9,18 +8,10 @@ class BeerList extends Component {
     super(props);
   }
 
-  useStyles() {
-    return makeStyles(theme => ({
-      root: {
-        width: '100%',
-        maxWidth: 360,
-        backgroundColor: theme.palette.background.paper,
-      },
-    }));
-  }
+ 
 
   render() {
-    const classes = this.useStyles();
+  
     const beersList = this.props.beers.map(beer => (
       <UpdateBeer
         beer={beer}
@@ -31,7 +22,7 @@ class BeerList extends Component {
       />
     ));
     return (
-      <div className={classes.root}>
+      <div >
         <List className="font">{beersList}</List>
         </div>
     );
