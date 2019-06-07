@@ -32,7 +32,7 @@ class BeerList extends Component {
     ));
     return (
       <div className={classes.root}>
-        <List>{beersList}</List>
+        <List className="font">{beersList}</List>
         </div>
     );
   }

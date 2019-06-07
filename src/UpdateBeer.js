@@ -4,12 +4,10 @@ import DeleteBeer from "./DeleteBeer";
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
-import clsx from 'clsx';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
 
 
 class UpdateBeer extends Component {
@@ -55,12 +53,12 @@ class UpdateBeer extends Component {
 
     return (
       <div>
-        <Divider />
+        <Divider/>
         <ListItem button>
 
           <span onClick={e => this.props.setEdit(e, this.props.beer.id)}>
             {this.props.beer.edit ? (
-              <form className={classes.container} noValidate autoComplete="off">
+              <form className={classes.container} noValidate autoComplete="off" className = "font">
                 <TextField
                   id="outlined-name"
                   label="Update"
@@ -72,19 +70,12 @@ class UpdateBeer extends Component {
                 />
               </form>
 
-              /* <input
-                type="text"
-                name="editBeerName"
-                value={this.state.updatedBeerName}
-                // placeholder={this.props.beer.name}
-                onChange={e => this.handleChange(e)} */
-
             ) : (
                 this.props.beer.name
               )}
           </span>
           {this.props.beer.edit ? (
-            <a
+            <Button
               href="/"
               onClick={e =>
                 this.props.handleUpdate(
@@ -95,10 +86,10 @@ class UpdateBeer extends Component {
               }
             >
               Update
-          </a>
+          </Button>
           ) : (
 
-              <DeleteBeer
+               <DeleteBeer
                 beerId={this.props.beer.id}
                 handleDelete={this.props.handleDelete}
               />

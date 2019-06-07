@@ -4,6 +4,7 @@ import CreateBeer from "./CreateBeer";
 import BeerList from "./BeerList";
 import axios from "axios";
 import TopNav from "./Components/TopNav/TopNav";
+import { fontFamily } from "@material-ui/system";
 
 class App extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class App extends Component {
     axios.get("https://cors-anywhere.herokuapp.com/https://sandbox-api.brewerydb.com/v2/beers", {
       params: {
         key: '6a77d8ebdb6fc67de2c49dc0f1141b01',
-        styleId: 43
+        styleId: 3
       }
     })
       .then(response => {
@@ -80,7 +81,7 @@ class App extends Component {
         ...this.state.beers,
         {
           id: this.state.newBeerCounter,
-          name: newBeerName
+          name: newBeerName,
         }
       ],
       newBeerCounter: this.state.newBeerCounter + 1
@@ -91,7 +92,6 @@ class App extends Component {
     return (
       <div>
         <TopNav />
-        <h1>Everyone's Beer Favorites</h1>
         <BeerList
           beers={this.state.beers}
           setEdit={this.setEdit.bind(this)}
